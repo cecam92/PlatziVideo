@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerRequest } from '../actions';
 import "../assets/styles/components/Register.scss";
-
+import Header from '../components/Header'
 const Register = props => {
   const [form, setValues] = useState({
     email: "",
@@ -25,6 +25,8 @@ const Register = props => {
   };
 
   return (
+    <>
+    <Header isRegister/>
     <section className="register">
       <section className="register__container">
         <h2>Regístrate</h2>
@@ -58,6 +60,7 @@ const Register = props => {
         <Link to="/login">Iniciar sesión</Link>
       </section>
     </section>
+    </>
   );
 };
 const mapDispatchToProps = {

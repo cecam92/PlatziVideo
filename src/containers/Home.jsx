@@ -1,48 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import Layout from '../components/Layout';
-import Search from '../components/Search';
-import Categories from '../components/Categories';
-import Carousel from '../components/Carousel';
-import CarouselItem from '../components/CarouselItem';
-import '../assets/styles/App.scss';
-
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import Search from "../components/Search";
+import Categories from "../components/Categories";
+import Carousel from "../components/Carousel";
+import CarouselItem from "../components/CarouselItem";
+import "../assets/styles/App.scss";
+import Header from "../components/Header";
 const Home = ({ myList, trends, originals }) => {
   return (
     <>
+      <Header />
       <Search isHome />
-      {myList.length > 0 &&
+      {myList.length > 0 && (
         <Categories title="Mi Lista">
           <Carousel>
-            {myList.map(item =>
-              <CarouselItem 
-                key={item.id} 
-                {...item}
-                isList
-              />
-            )}
+            {myList.map((item) => (
+              <CarouselItem key={item.id} {...item} isList />
+            ))}
           </Carousel>
         </Categories>
-      }
+      )}
       <Categories title="Tendencias">
         <Carousel>
-          {trends.map(item =>
+          {trends.map((item) => (
             <CarouselItem key={item.id} {...item} />
-          )}
+          ))}
         </Carousel>
       </Categories>
       <Categories title="Originales de Platzi Video">
         <Carousel>
-          {originals.map(item =>
+          {originals.map((item) => (
             <CarouselItem key={item.id} {...item} />
-          )}
+          ))}
         </Carousel>
       </Categories>
     </>
   );
-}
+};
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     myList: state.myList,
     trends: state.trends,
