@@ -3,8 +3,10 @@ import googleIcon from "../assets/static/google-icon.png";
 import twitterIcon from "../assets/static/twitter-icon.png";
 import "../assets/styles/components/Login.scss";
 import { Link } from "react-router-dom";
+import {connect} from "react-redux";
+import {loginRequest} from "../actions";
 
-const Login = () => {
+const Login = props => {
   const [form, setValues] = useState({
     email: "",
   });
@@ -17,7 +19,8 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(form);
+    props.loginRequest(form)
+    props.history.push('./');
   };
   return (
     <section className="login">
@@ -64,4 +67,8 @@ const Login = () => {
     </section>
   );
 };
-export default Login;
+const mapDispatchToProps = {
+  loginRequest,
+};
+
+export default connect(null,mapDispatchToProps) (Login);
