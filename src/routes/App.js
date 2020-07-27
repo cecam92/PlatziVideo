@@ -1,14 +1,14 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import Home from "../containers/Home";
 import Login from "../containers/Login";
 import Register from "../containers/register";
 import notFound from "../containers/notfound";
 import Layout from "../components/Layout";
-import Player from '../containers/Player';
+import Player from "../containers/Player";
 
 const App = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Layout>
       <Switch>
         <Route exact path="/" component={Home} />
@@ -19,7 +19,7 @@ const App = () => (
         <Route component={notFound} />
       </Switch>
     </Layout>
-  </BrowserRouter>
+  </HashRouter>
 );
 
 export default App;
